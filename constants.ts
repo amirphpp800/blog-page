@@ -1,7 +1,7 @@
 import type { UiTranslations, ContentBlock } from './types';
 
 export const UI_TEXT: UiTranslations = {
-  headerTitle: 'وقایع‌نامه توسعه و طراحی',
+  headerTitle: 'وبلاگ شخصی',
   footerText: 'تمام حقوق محفوظ است.',
   aiDisclaimer: 'برای نشان دادن قدرت Ai، این وب‌سایت کاملاً با Ai توسعه داده می‌شود.',
   themeToggle: 'تغییر پوسته',
