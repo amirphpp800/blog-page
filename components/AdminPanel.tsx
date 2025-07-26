@@ -123,9 +123,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ translations }) => {
                         return (
                             <div>
                                 {block.items.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-2 mb-2">
-                                        <input type="text" value={item} onChange={(e) => handleListItemChange(index, i, e.target.value)} className={baseInputStyles} />
-                                        <button onClick={() => handleRemoveListItem(index, i)} className={dangerButtonStyles}>{translations.removeListItem}</button>
+                                    <div key={i} className="flex flex-col sm:flex-row items-center gap-2 mb-2">
+                                        <input type="text" value={item} onChange={(e) => handleListItemChange(index, i, e.target.value)} className={`${baseInputStyles} flex-grow`} />
+                                        <button onClick={() => handleRemoveListItem(index, i)} className={`${dangerButtonStyles} self-end sm:self-auto`}>{translations.removeListItem}</button>
                                     </div>
                                 ))}
                                 <button onClick={() => handleAddListItem(index)} className="text-sm text-accent-dark hover:underline mt-1">{translations.addListItem}</button>
