@@ -55,6 +55,7 @@ export interface Post {
 export interface UiTranslations {
   headerTitle: string;
   footerText: string;
+  aiDisclaimer: string;
   themeToggle: string;
   loading: string;
   error: string;
