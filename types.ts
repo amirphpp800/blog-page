@@ -81,4 +81,13 @@ export interface UiTranslations {
   orderedList: string;
   addListItem: string;
   removeListItem: string;
+  // New Admin Panel Features
+  selectTemplate: string;
+  template: string;
+  standardPost: string;
+  technicalTutorial: string;
+  listPost: string;
+  moveBlockUp: string;
+  moveBlockDown: string;
+  uploadImage: string;
 }
