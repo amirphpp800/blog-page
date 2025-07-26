@@ -65,7 +65,7 @@ export const POST_TEMPLATES: { name: keyof UiTranslations; content: ContentBlock
         name: 'listPost',
         content: [
             { type: 'paragraph', text: 'در این پست، چند نکته مهم را لیست کرده‌ایم.' },
-            { type:_('ol', 'ol'), items: ['آیتم اول', 'آیتم دوم', 'آیتم سوم'] },
+            { type: 'ol', items: ['آیتم اول', 'آیتم دوم', 'آیتم سوم'] },
             { type: 'quote', text: 'یک نقل قول مرتبط.', author: 'منبع' }
         ]
     }
