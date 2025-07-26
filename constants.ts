@@ -1,4 +1,4 @@
-import type { UiTranslations } from './types';
+import type { UiTranslations, ContentBlock } from './types';
 
 export const UI_TEXT: UiTranslations = {
   headerTitle: 'وقایع‌نامه توسعه و طراحی',
@@ -8,7 +8,7 @@ export const UI_TEXT: UiTranslations = {
   error: 'خطا در بارگذاری پست‌ها. لطفاً بعداً دوباره تلاش کنید.',
   // Admin Panel Translations
   adminPanelTitle: 'پنل مدیریت: افزودن پست جدید',
-  adminPanelInstructions: 'فرم زیر را پر کنید. پس از تکمیل، روی «تولید JSON» کلیک کرده و کد تولید شده را کپی و به انتهای فایل `public/posts.json` اضافه کنید.',
+  adminPanelInstructions: 'برای شروع یک الگو انتخاب کنید یا بلوک‌های محتوای خود را بسازید. پس از تکمیل، کد JSON را تولید و در فایل `public/posts.json` کپی کنید.',
   titleLabel: 'عنوان پست',
   tagsLabel: 'تگ‌ها (با ویرگول جدا کنید)',
   tagsPlaceholder: 'مثال: طراحی, وب, ری‌اکت',
@@ -28,4 +28,45 @@ export const UI_TEXT: UiTranslations = {
   orderedList: 'لیست مرتب (ol)',
   addListItem: 'افزودن آیتم',
   removeListItem: 'حذف',
+  // New Admin Panel Features
+  selectTemplate: 'یک الگو انتخاب کنید...',
+  template: 'الگو',
+  standardPost: 'پست استاندارد',
+  technicalTutorial: 'آموزش فنی',
+  listPost: 'پست لیستی',
+  moveBlockUp: 'انتقال به بالا',
+  moveBlockDown: 'انتقال به پایین',
+  uploadImage: 'آپلود تصویر',
 };
+
+// Post Templates for Admin Panel
+export const POST_TEMPLATES: { name: keyof UiTranslations; content: ContentBlock[] }[] = [
+    {
+        name: 'standardPost',
+        content: [
+            { type: 'paragraph', text: 'این یک پاراگراف مقدمه است.' },
+            { type: 'heading', text: 'این یک تیتر است' },
+            { type: 'paragraph', text: 'این یک پاراگراف دیگر برای توضیح بیشتر است.' },
+            { type: 'image', src: '', alt: '' },
+        ]
+    },
+    {
+        name: 'technicalTutorial',
+        content: [
+            { type: 'paragraph', text: 'در این آموزش، ما به بررسی موضوع فنی زیر خواهیم پرداخت.' },
+            { type: 'heading', text: 'مرحله ۱: تنظیمات اولیه' },
+            { type: 'paragraph', text: 'ابتدا باید محیط کاری خود را آماده کنیم.' },
+            { type: 'code', text: 'npm install my-package' },
+            { type: 'heading', text: 'مرحله ۲: اجرای کد' },
+            { type: 'paragraph', text: 'حالا کد زیر را اجرا کنید.' },
+        ]
+    },
+    {
+        name: 'listPost',
+        content: [
+            { type: 'paragraph', text: 'در این پست، چند نکته مهم را لیست کرده‌ایم.' },
+            { type:_('ol', 'ol'), items: ['آیتم اول', 'آیتم دوم', 'آیتم سوم'] },
+            { type: 'quote', text: 'یک نقل قول مرتبط.', author: 'منبع' }
+        ]
+    }
+];
