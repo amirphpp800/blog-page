@@ -58,6 +58,12 @@ export interface UiTranslations {
   themeToggle: string;
   loading: string;
   error: string;
+  // Search, Filter, Pagination
+  searchPlaceholder: string;
+  allCategories: string;
+  noResultsFound: string;
+  paginationPrevious: string;
+  paginationNext: string;
   // Admin Panel
   adminPanelTitle: string;
   adminPanelInstructions: string;
