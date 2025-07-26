@@ -6,6 +6,12 @@ export const UI_TEXT: UiTranslations = {
   themeToggle: 'تغییر پوسته',
   loading: 'در حال بارگذاری پست‌ها...',
   error: 'خطا در بارگذاری پست‌ها. لطفاً بعداً دوباره تلاش کنید.',
+  // Search, Filter, Pagination
+  searchPlaceholder: 'جستجو در مقالات...',
+  allCategories: 'همه دسته‌بندی‌ها',
+  noResultsFound: 'هیچ مقاله‌ای با این مشخصات یافت نشد.',
+  paginationPrevious: 'قبلی',
+  paginationNext: 'بعدی',
   // Admin Panel Translations
   adminPanelTitle: 'پنل مدیریت: افزودن پست جدید',
   adminPanelInstructions: 'برای شروع یک الگو انتخاب کنید یا بلوک‌های محتوای خود را بسازید. پس از تکمیل، کد JSON را تولید و در فایل `public/posts.json` کپی کنید.',
