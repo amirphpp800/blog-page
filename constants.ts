@@ -13,6 +13,7 @@ export const UI_TEXT: UiTranslations = {
   noResultsFound: 'هیچ مقاله‌ای با این مشخصات یافت نشد.',
   paginationPrevious: 'قبلی',
   paginationNext: 'بعدی',
+  paginationPageInfo: (currentPage, totalPages) => `صفحه ${currentPage} از ${totalPages}`,
   // Admin Panel Translations
   adminPanelTitle: 'پنل مدیریت: افزودن پست جدید',
   adminPanelInstructions: 'برای شروع یک الگو انتخاب کنید یا بلوک‌های محتوای خود را بسازید. پس از تکمیل، کد JSON را تولید و در فایل `public/posts.json` کپی کنید.',
@@ -47,7 +48,7 @@ export const UI_TEXT: UiTranslations = {
 };
 
 // Post Templates for Admin Panel
-export const POST_TEMPLATES: { name: keyof UiTranslations; content: ContentBlock[] }[] = [
+export const POST_TEMPLATES = [
     {
         name: 'standardPost',
         content: [
@@ -76,4 +77,4 @@ export const POST_TEMPLATES: { name: keyof UiTranslations; content: ContentBlock
             { type: 'quote', text: 'یک نقل قول مرتبط.', author: 'منبع' }
         ]
     }
-];
+] as const;

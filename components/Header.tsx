@@ -12,6 +12,7 @@ interface HeaderProps {
   categories: string[];
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
+  onLogoClick: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
@@ -22,7 +23,8 @@ export const Header: React.FC<HeaderProps> = ({
   setSearchTerm,
   categories,
   selectedCategory,
-  setSelectedCategory
+  setSelectedCategory,
+  onLogoClick
 }) => {
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -35,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="py-4 px-4 sm:px-8 border-b border-accent-light dark:border-accent-dark bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm sticky top-0 z-10">
       <div className="container mx-auto flex flex-wrap justify-between items-center gap-4">
-        <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="بازگشت به صفحه اصلی">
+        <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="بازگشت به صفحه اصلی" onClick={onLogoClick}>
             <img src={theme === 'light' ? '/Logos/logo-globe-light.svg' : '/Logos/logo-globe-dark.svg'} alt="Logo" className="h-14 w-auto"/>
             <span className="text-lg md:text-xl font-bold text-black dark:text-white hidden sm:inline">
             {translations.headerTitle}

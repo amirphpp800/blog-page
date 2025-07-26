@@ -27,21 +27,21 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
     return (
         <div className="flex justify-center items-center gap-4 mt-12">
             <button
-                onClick={handleNext}
-                disabled={currentPage === totalPages}
-                className={`${buttonStyles} ${hoverStyles}`}
-            >
-                {translations.paginationNext}
-            </button>
-            <span className="text-gray-700 dark:text-gray-300">
-                صفحه {currentPage} از {totalPages}
-            </span>
-            <button
                 onClick={handlePrevious}
                 disabled={currentPage === 1}
                 className={`${buttonStyles} ${hoverStyles}`}
             >
                 {translations.paginationPrevious}
+            </button>
+            <span className="text-gray-700 dark:text-gray-300">
+                {translations.paginationPageInfo(currentPage, totalPages)}
+            </span>
+            <button
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+                className={`${buttonStyles} ${hoverStyles}`}
+            >
+                {translations.paginationNext}
             </button>
         </div>
     );

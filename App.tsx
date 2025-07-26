@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import type { Theme, Post, ContentBlock } from './types';
 import { UI_TEXT } from './constants';
+import { useDebounce } from './hooks/useDebounce';
 import { Header } from './components/Header';
 import { BlogPost } from './components/BlogPost';
 import { Footer } from './components/Footer';
@@ -10,13 +11,13 @@ import { Pagination } from './components/Pagination';
 
 const POSTS_PER_PAGE = 9;
 
-const Layout: React.FC<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>>; children: React.ReactNode, headerProps: Omit<React.ComponentProps<typeof Header>, 'theme' | 'setTheme' | 'translations'> }> = ({ theme, setTheme, children, headerProps }) => (
+const Layout: React.FC<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>>; children: React.ReactNode, headerProps: React.ComponentProps<typeof Header> }> = ({ theme, setTheme, children, headerProps }) => (
   <div className={`min-h-screen bg-gray-100 dark:bg-zinc-950 text-black dark:text-white transition-colors duration-300 flex flex-col`}>
     <Header 
+      {...headerProps}
       theme={theme} 
       setTheme={setTheme} 
       translations={UI_TEXT}
-      {...headerProps}
     />
     <main className="container mx-auto px-4 sm:px-8 py-8 flex-grow">
       {children}
@@ -70,6 +71,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   
@@ -99,18 +101,22 @@ function App() {
   }, []);
 
   const filteredPosts = useMemo(() => {
-    setCurrentPage(1); // Reset page on filter change
     return posts
       .filter(post => {
         const categoryMatch = selectedCategory === 'all' || post.tags.includes(selectedCategory);
         if (!categoryMatch) return false;
         
-        const term = searchTerm.toLowerCase().trim();
+        const term = debouncedSearchTerm.toLowerCase().trim();
         if (!term) return true;
         
         return getPostTextContent(post).includes(term);
       });
-  }, [posts, searchTerm, selectedCategory]);
+  }, [posts, debouncedSearchTerm, selectedCategory]);
+  
+  // Reset page to 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedSearchTerm, selectedCategory]);
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const paginatedPosts = useMemo(() => {
@@ -136,12 +142,19 @@ function App() {
     root.dir = 'rtl';
   }, []);
   
+  const handleLogoClick = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+    setCurrentPage(1);
+  };
+  
   const headerProps = {
     searchTerm,
     setSearchTerm,
     categories,
     selectedCategory,
     setSelectedCategory,
+    onLogoClick: handleLogoClick,
   };
 
   return (
@@ -151,7 +164,7 @@ function App() {
           <Route path="/" element={
             <>
               <HomePage posts={paginatedPosts} loading={loading} error={error} />
-              {!loading && !error && filteredPosts.length > POSTS_PER_PAGE && (
+              {!loading && !error && totalPages > 1 && (
                 <Pagination 
                   currentPage={currentPage}
                   totalPages={totalPages}
