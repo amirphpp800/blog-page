@@ -1,8 +1,7 @@
-
 import React from 'react';
 
 interface IconProps {
-  name: 'sun' | 'moon' | 'language' | 'github' | 'linkedin' | 'twitter' | 'telegram';
+  name: 'sun' | 'moon' | 'language' | 'github' | 'linkedin' | 'twitter' | 'telegram' | 'arrowUp' | 'arrowDown';
   className?: string;
 }
 
@@ -55,6 +54,12 @@ const ICONS: Record<IconProps['name'], React.ReactNode> = {
       strokeLinejoin="round"
       d="M15 10l-4 4 6 6 4-16-18 7 4 2 2 6 3-4"
     />
+  ),
+  arrowUp: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+  ),
+  arrowDown: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
   )
 };
 
