@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IconProps {
-  name: 'sun' | 'moon' | 'language' | 'github' | 'linkedin' | 'twitter' | 'telegram' | 'arrowUp' | 'arrowDown';
+  name: 'sun' | 'moon' | 'language' | 'github' | 'linkedin' | 'twitter' | 'telegram' | 'arrowUp' | 'arrowDown' | 'search';
   className?: string;
 }
 
@@ -60,6 +60,9 @@ const ICONS: Record<IconProps['name'], React.ReactNode> = {
   ),
   arrowDown: (
     <path strokeLinecap="round" strokeLinejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+  ),
+  search: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
   )
 };
 
