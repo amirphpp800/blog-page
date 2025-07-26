@@ -1,0 +1,31 @@
+import type { UiTranslations } from './types';
+
+export const UI_TEXT: UiTranslations = {
+  headerTitle: 'وقایع‌نامه توسعه و طراحی',
+  footerText: 'تمام حقوق محفوظ است.',
+  themeToggle: 'تغییر پوسته',
+  loading: 'در حال بارگذاری پست‌ها...',
+  error: 'خطا در بارگذاری پست‌ها. لطفاً بعداً دوباره تلاش کنید.',
+  // Admin Panel Translations
+  adminPanelTitle: 'پنل مدیریت: افزودن پست جدید',
+  adminPanelInstructions: 'فرم زیر را پر کنید. پس از تکمیل، روی «تولید JSON» کلیک کرده و کد تولید شده را کپی و به انتهای فایل `public/posts.json` اضافه کنید.',
+  titleLabel: 'عنوان پست',
+  tagsLabel: 'تگ‌ها (با ویرگول جدا کنید)',
+  tagsPlaceholder: 'مثال: طراحی, وب, ری‌اکت',
+  contentLabel: 'محتوای پست',
+  addBlock: 'افزودن بلوک محتوا',
+  removeBlock: 'حذف این بلوک',
+  generateJson: 'تولید JSON',
+  copyJson: 'کپی JSON',
+  copied: 'کپی شد!',
+  jsonOutput: 'خروجی JSON:',
+  paragraph: 'پاراگراف',
+  heading: 'تیتر',
+  image: 'تصویر',
+  quote: 'نقل قول',
+  code: 'کد',
+  unorderedList: 'لیست نامرتب (ul)',
+  orderedList: 'لیست مرتب (ol)',
+  addListItem: 'افزودن آیتم',
+  removeListItem: 'حذف',
+};
