@@ -23,10 +23,15 @@ export const Footer: React.FC<FooterProps> = ({ translations }) => {
 
   return (
     <footer className="border-t border-accent-light dark:border-accent-dark py-6 px-4 sm:px-8 mt-12 bg-white/50 dark:bg-zinc-900/50">
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
-        <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 sm:mb-0">
-          &copy; {year} {translations.footerText}
-        </p>
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4">
+        <div className="text-sm">
+          <p className="text-gray-700 dark:text-gray-300">
+            &copy; {year} {translations.footerText}
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            {translations.aiDisclaimer}
+          </p>
+        </div>
         <div className="flex items-center gap-6">
           <SocialLink href="https://github.com" ariaLabel="صفحه گیت‌هاب">
             <Icon name="github" className="w-6 h-6" />
