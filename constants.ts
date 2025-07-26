@@ -3,6 +3,7 @@ import type { UiTranslations, ContentBlock } from './types';
 export const UI_TEXT: UiTranslations = {
   headerTitle: 'وقایع‌نامه توسعه و طراحی',
   footerText: 'تمام حقوق محفوظ است.',
+  aiDisclaimer: 'برای نشان دادن قدرت Ai، این وب‌سایت کاملاً با Ai توسعه داده می‌شود.',
   themeToggle: 'تغییر پوسته',
   loading: 'در حال بارگذاری پست‌ها...',
   error: 'خطا در بارگذاری پست‌ها. لطفاً بعداً دوباره تلاش کنید.',
