@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, setTheme, translations })
     <header className="py-4 px-4 sm:px-8 border-b border-accent-light dark:border-accent-dark bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm sticky top-0 z-10">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3" aria-label="بازگشت به صفحه اصلی">
-            <img src={theme === 'light' ? 'Logos/logo-light.svg' : 'Logos/logo-dark.svg'} alt="Logo" className="h-8 w-auto"/>
+            <img src={theme === 'light' ? 'Logos/logo-globe-light.svg' : 'Logos/logo-globe-dark.svg'} alt="Logo" className="h-14 w-auto"/>
             <span className="text-lg md:text-xl font-bold text-black dark:text-white hidden sm:inline">
             {translations.headerTitle}
             </span>
