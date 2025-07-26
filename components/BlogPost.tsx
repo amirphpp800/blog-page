@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import type { Post, ContentBlock } from '../types';
 
 interface BlogPostProps {
   post: Post;
+  isLink?: boolean;
 }
 
 const Tag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -66,13 +68,14 @@ const ContentRenderer: React.FC<{ blocks: ContentBlock[] }> = ({ blocks }) => {
 };
 
 
-export const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
-  const { title, content, tags } = post;
+export const BlogPost: React.FC<BlogPostProps> = ({ post, isLink }) => {
+  const { id, title, content, tags } = post;
   
   const cardStyles = "bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800";
+  const hoverStyles = isLink ? "transition-transform duration-300 hover:-translate-y-1" : "";
 
-  return (
-    <article className={`p-6 sm:p-8 my-8 ${cardStyles}`}>
+  const ArticleContent = (
+    <article className={`p-6 sm:p-8 my-8 ${cardStyles} ${hoverStyles}`}>
       <header className="mb-4">
         <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white mb-2">
           {title}
@@ -85,4 +88,14 @@ export const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
       <ContentRenderer blocks={content} />
     </article>
   );
+
+  if (isLink) {
+    return (
+      <Link to={`/post/${id}`} aria-label={`ادامه مطلب ${title}`} className="block">
+        {ArticleContent}
+      </Link>
+    );
+  }
+
+  return ArticleContent;
 };

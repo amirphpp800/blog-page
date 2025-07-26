@@ -14,6 +14,8 @@ export const UI_TEXT: UiTranslations = {
   paginationPrevious: 'قبلی',
   paginationNext: 'بعدی',
   paginationPageInfo: (currentPage, totalPages) => `صفحه ${currentPage} از ${totalPages}`,
+  // Post Page
+  backToHome: 'بازگشت به لیست مقالات',
   // Admin Panel Translations
   adminPanelTitle: 'پنل مدیریت: افزودن پست جدید',
   adminPanelInstructions: 'برای شروع یک الگو انتخاب کنید یا بلوک‌های محتوای خود را بسازید. پس از تکمیل، کد JSON را تولید و در فایل `public/posts.json` کپی کنید.',

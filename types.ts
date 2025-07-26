@@ -66,6 +66,8 @@ export interface UiTranslations {
   paginationPrevious: string;
   paginationNext: string;
   paginationPageInfo: (currentPage: number, totalPages: number) => string;
+  // Post Page
+  backToHome: string;
   // Admin Panel
   adminPanelTitle: string;
   adminPanelInstructions: string;

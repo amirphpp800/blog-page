@@ -8,10 +8,13 @@ import { BlogPost } from './components/BlogPost';
 import { Footer } from './components/Footer';
 import { AdminPanel } from './components/AdminPanel';
 import { Pagination } from './components/Pagination';
+import { PostPage } from './components/PostPage';
 
 const POSTS_PER_PAGE = 9;
 
-const Layout: React.FC<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>>; children: React.ReactNode, headerProps: React.ComponentProps<typeof Header> }> = ({ theme, setTheme, children, headerProps }) => (
+type HeaderLayoutProps = Omit<React.ComponentProps<typeof Header>, 'theme' | 'setTheme' | 'translations'>;
+
+const Layout: React.FC<{ theme: Theme; setTheme: React.Dispatch<React.SetStateAction<Theme>>; children: React.ReactNode, headerProps: HeaderLayoutProps }> = ({ theme, setTheme, children, headerProps }) => (
   <div className={`min-h-screen bg-gray-100 dark:bg-zinc-950 text-black dark:text-white transition-colors duration-300 flex flex-col`}>
     <Header 
       {...headerProps}
@@ -39,7 +42,7 @@ const HomePage: React.FC<{posts: Post[], loading: boolean, error: string | null}
   return (
     <div>
       {posts.map((post) => (
-        <BlogPost key={post.id} post={post} />
+        <BlogPost key={post.id} post={post} isLink />
       ))}
     </div>
   );
@@ -148,7 +151,7 @@ function App() {
     setCurrentPage(1);
   };
   
-  const headerProps = {
+  const headerProps: HeaderLayoutProps = {
     searchTerm,
     setSearchTerm,
     categories,
@@ -174,6 +177,7 @@ function App() {
               )}
             </>
           } />
+          <Route path="/post/:id" element={<PostPage posts={posts} />} />
           <Route path="/admin-posts" element={<AdminPanel translations={UI_TEXT} />} />
         </Routes>
       </Layout>

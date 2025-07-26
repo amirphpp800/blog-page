@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ translations }) => {
           <SocialLink href="https://github.com" ariaLabel="صفحه گیت‌هاب">
             <Icon name="github" className="w-6 h-6" />
           </SocialLink>
-          <SocialLink href="https://t.me" ariaLabel="کانال تلگرام">
+          <SocialLink href="https://t.me/Kalzareth" ariaLabel="کانال تلگرام">
             <Icon name="telegram" className="w-6 h-6" />
           </SocialLink>
         </div>
